@@ -3,7 +3,7 @@ import { Flex } from "@chakra-ui/react";
 const CartWidget = () => {
   return (
     <Flex alignItems="center" justifyContent="space-between">
-      <FaShoppingCart size={30}/> 99
+      <FaShoppingCart size={30} color="gray"/> 99
     </Flex>
   );
 };
