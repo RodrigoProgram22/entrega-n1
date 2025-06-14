@@ -1,23 +1,10 @@
-import { useEffect, useState } from "react";
-import { getAllProducts } from "../services/products.service";
 import ItemListContainer from "../components/ItemListContainer";
+import { useTitle } from "../hooks/useTitle";
+import { useGetFirestoreDocs } from "../hooks/useGetFirestoreDocs";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    getAllProducts()
-      .then((res) => {
-        setProducts(res.data.products);
-      })
-      .finally(() => {
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
+  const { loading, items: products } = useGetFirestoreDocs("products");
+  useTitle("Home");
   return <ItemListContainer products={products} loading={loading} />;
 };
 

@@ -9,8 +9,8 @@ import {
   Box,
   StackDivider,
   VStack,
-  Spinner,
 } from "@chakra-ui/react";
+import ItemCount from "./ItemCount";
 import { MdLocalShipping } from "react-icons/md";
 const ItemDetailContainer = ({ product }) => {
   const priceAfterDiscount = (
@@ -30,7 +30,7 @@ const ItemDetailContainer = ({ product }) => {
             <Image
               rounded={"md"}
               alt={"product image"}
-              src={product.images[0]}
+              src={product.images}
               fit={"cover"}
               align={"center"}
               w={"100%"}
@@ -78,24 +78,25 @@ const ItemDetailContainer = ({ product }) => {
                 {product.description}
               </Text>
             </VStack>
+            <ItemCount product={product} />
           </Stack>
         </Stack>
-          {product.reviews.map((reviews, index) => (
-            <Container
-              border={"1px red solid"}
-              p={2}
-              borderRadius={"2xl"}
-              key={index}
-            >
-              <h2>Review {index + 1}</h2>
+        {/* {product.reviews.map((reviews, index) => (
+          <Container
+            border={"1px red solid"}
+            p={2}
+            borderRadius={"2xl"}
+            key={index}
+          >
+            <h2>Review {index + 1}</h2>
 
-              <p>Nombre : {reviews.reviewerName}</p>
-              <p>Comentario : {reviews.comment}</p>
-              <p fontWeight={800} fontSize={"xl"}>
-                Fecha : {reviews.date}
-              </p>
-            </Container>
-          ))}
+            <p>Nombre : {reviews.reviewerName}</p>
+            <p>Comentario : {reviews.comment}</p>
+            <p fontWeight={800} fontSize={"xl"}>
+              Fecha : {reviews.date}
+            </p>
+          </Container>
+        ))} */}
       </SimpleGrid>
     </Container>
   );
